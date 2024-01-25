@@ -12,7 +12,20 @@
           "package_name": "com.example.step_tracker_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "233836351366-boh396j8jpkebb81192gme4nsu8if4pg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.step_tracker_app",
+            "certificate_hash": "8a0e9d954c93e9d735ebc68ad3898ead00d1bcec"
+          }
+        },
+        {
+          "client_id": "233836351366-ea0ikv3sk6h01ih72odbaba7p5qcrui1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAgBBfceKIkqE5hibg0xbmOLDAvDG46ko0"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "233836351366-ea0ikv3sk6h01ih72odbaba7p5qcrui1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "233836351366-p3ftqt0jju6aabt91s2gt7k5mukfsrcf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.step_tracker_app"
+              }
+            }
+          ]
         }
       }
     }
