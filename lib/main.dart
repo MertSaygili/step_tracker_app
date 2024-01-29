@@ -1,11 +1,21 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:step_tracker_app/app/constants/app_strings.dart';
 import 'package:step_tracker_app/app/init.dart';
-import 'package:step_tracker_app/app/service/firebase/auth/auth_service.dart';
-import 'package:step_tracker_app/app/service/firebase/auth/auth_service_impl.dart';
+import 'package:step_tracker_app/app/localization/app_localization.dart';
+import 'package:step_tracker_app/presentation/login/view/login_screen.dart';
 
 Future<void> main() async {
   await Init.init();
-  runApp(const MyApp());
+  runApp(
+    EasyLocalization(
+      supportedLocales: AppLocalization.supportedLocales,
+      path: AppLocalization.localizationJsonPath,
+      fallbackLocale: AppLocalization.supportedLocales.first,
+      startLocale: AppLocalization.supportedLocales.first,
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,26 +24,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: AppLocalization.supportedLocales,
+      locale: context.locale,
+      title: AppStrings.appName,
       theme: ThemeData.dark(),
-      home: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () async {
-              final AuthService service = AuthServiceImpl();
-              await service.signUp(name: 'name', email: 'email113@gmail.com', password: 'password');
-            },
-            child: const Text('normal sign in'),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              final AuthService service = AuthServiceImpl();
-              await service.googleSignIn();
-            },
-            child: const Text('google sign in'),
-          ),
-        ],
-      ),
+      home: const LoginScreen(),
     );
   }
 }

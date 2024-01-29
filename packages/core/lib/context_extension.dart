@@ -7,10 +7,8 @@ extension ContextExtension on BuildContext {
   // text theme
   TextTheme get _textTheme => Theme.of(this).textTheme;
 
-  // color scheme
-  ColorScheme get _colorScheme => Theme.of(this).colorScheme;
-
-  // theme
+  // current localization
+  String get currentLocalization => Localizations.localeOf(this).languageCode;
 
   // true, false
   bool get trueCode => true;
