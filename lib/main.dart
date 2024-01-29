@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           ElevatedButton(
             onPressed: () async {
               final AuthService service = AuthServiceImpl();
-              await service.signUp(name: 'name', email: 'email123@gmail.com', password: 'password');
+              await service.signUp(name: 'name', email: 'email113@gmail.com', password: 'password');
             },
             child: const Text('normal sign in'),
           ),

@@ -13,7 +13,6 @@ class AuthServiceImpl extends AuthService {
       final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
       if (userCredential.user != null) {
         await _registerUser(name: name, email: email, password: password);
-        // TODO: navigate to login
       }
     } on FirebaseAuthException catch (e) {
       await Fluttertoast.showToast(msg: e.message!, toastLength: Toast.LENGTH_LONG);
@@ -24,9 +23,7 @@ class AuthServiceImpl extends AuthService {
   Future<void> signIn({required String email, required String password}) async {
     try {
       final userCredential = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
-      if (userCredential.user != null) {
-        // TODO: navigate to home
-      }
+      if (userCredential.user != null) {}
     } on FirebaseAuthException catch (e) {
       await Fluttertoast.showToast(msg: e.message!, toastLength: Toast.LENGTH_LONG);
     }
@@ -36,7 +33,6 @@ class AuthServiceImpl extends AuthService {
   Future<void> googleSignIn() async {
     try {
       final googleUser = await GoogleSignIn().signIn();
-
       final googleAuth = await googleUser?.authentication;
 
       final credential = GoogleAuthProvider.credential(

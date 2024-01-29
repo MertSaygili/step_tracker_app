@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>545074458795-vvrujgkcitbaecdd8omvhub3t89gb1gd.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.545074458795-vvrujgkcitbaecdd8omvhub3t89gb1gd</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>545074458795-6cbqhqmh6416n2nu0pjca205tr32d2jb.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDaXO4dU8F_mbCFLcBzuGunzucU2ZGUSkw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>545074458795</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.steptrackerapp</string>
+	<key>PROJECT_ID</key>
+	<string>step-tracker-app-36c6e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>step-tracker-app-36c6e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:545074458795:ios:975b053515a0c02e8407ee</string>
+</dict>
+</plist>
