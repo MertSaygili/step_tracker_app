@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:step_tracker_app/app/constants/app_routers.dart';
+import 'package:step_tracker_app/presentation/auth/login/view/login_screen.dart';
 import 'package:step_tracker_app/presentation/home/s.dart';
-import 'package:step_tracker_app/presentation/login/view/login_screen.dart';
 
 @immutable
 final class AppGoRouter {

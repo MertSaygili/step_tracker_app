@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:step_tracker_app/app/bloc/base_cubit.dart';
 import 'package:step_tracker_app/app/service/firebase/auth/auth_service.dart';
-import 'package:step_tracker_app/presentation/login/view_model/states/login_states.dart';
+import 'package:step_tracker_app/presentation/auth/login/view_model/states/login_states.dart';
 
 class LoginCubit extends BaseCubit<LoginState> {
   LoginCubit({required this.authService, required this.screenContext}) : super(const LoginState());
