@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:step_tracker_app/app/constants/app_strings.dart';
 import 'package:step_tracker_app/app/init.dart';
 import 'package:step_tracker_app/app/localization/app_localization.dart';
+import 'package:step_tracker_app/app/theme/custom_light_theme.dart';
 import 'package:step_tracker_app/presentation/login/view/login_screen.dart';
 
 Future<void> main() async {
@@ -28,8 +29,8 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalization.supportedLocales,
       locale: context.locale,
       title: AppStrings.appName,
-      theme: ThemeData.dark(),
-      home: const LoginScreen(),
+      theme: CustomLightTheme.themeData,
+      home: LoginScreen(),
     );
   }
 }

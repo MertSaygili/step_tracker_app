@@ -10,10 +10,12 @@ class LoginCubit extends Cubit<LoginState> {
     emit(state.copyWith(isLoading: !state.isLoading));
   }
 
-  void signIn(String email, String password) {
+  Future<void> signIn(String email, String password) async {
+    print('ss');
     _changeLoading();
 
-    emit(state.copyWith(loginSuccess: true));
+    await Future.delayed(const Duration(seconds: 5));
+
     _changeLoading();
   }
 

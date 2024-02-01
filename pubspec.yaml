@@ -45,6 +45,9 @@ dependencies:
   # fonts
   google_fonts: ^6.1.0
 
+  # ui helper
+  sign_in_button: ^3.2.0
+
   # modules
   core:
     path: packages/core
@@ -69,3 +72,4 @@ flutter:
 
   assets:
     - assets/translations/
+    - assets/images/

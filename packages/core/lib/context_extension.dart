@@ -37,17 +37,20 @@ extension ContextExtension on BuildContext {
 
   // constant app colos
   Color get primaryColor => const Color(0XFF3498DB);
+  Color get lowPrimaryColor => const Color(0XFF3498DB).withOpacity(0.2);
   Color get backgroundColor => const Color(0XFfF0F0F0);
   Color get errorColor => const Color(0xFFE74C3C);
   Color get borderColor => const Color(0xFFC0C0C0);
   Color get textColor => const Color(0XFF000000);
   Color get textColorLight => const Color(0XFFC0C0C0);
   Color get whiteColor => const Color(0XFFFFFFFF);
+  Color get blackColor => const Color(0XFF000000);
+  Color get transparentColor => Colors.transparent;
 
   // padding
   // ignore: use_named_constants
   EdgeInsets get paddingZero => const EdgeInsets.all(0);
-  EdgeInsets get paddingPage => const EdgeInsets.all(16);
+  EdgeInsets get paddingPage => const EdgeInsets.all(20);
   EdgeInsets get paddingHorizontalPage => const EdgeInsets.symmetric(vertical: 8, horizontal: 12);
   EdgeInsets get paddingLeftLow => const EdgeInsets.only(left: 4);
   EdgeInsets get paddingLeftNormal => const EdgeInsets.only(left: 8);
@@ -62,6 +65,11 @@ extension ContextExtension on BuildContext {
   EdgeInsets get paddingMediumX => const EdgeInsets.all(12);
   EdgeInsets get paddingHigh => const EdgeInsets.all(16);
   EdgeInsets get paddingBottom => const EdgeInsets.symmetric(vertical: 32);
+
+  // gap padding
+  double get gapPaddingVeryLow => 2;
+  double get gapPaddingLow => 4;
+  double get gapPaddingNormal => 8;
 
   // border radius
   BorderRadius get borderRadiusLow => const BorderRadius.all(Radius.circular(4));
@@ -108,4 +116,7 @@ extension ContextExtension on BuildContext {
   double get fontSize36 => 36;
   double get fontSize40 => 40;
   double get fontSize48 => 48;
+
+  // radius
+  double get logoRadius => 100;
 }

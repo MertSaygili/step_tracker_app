@@ -1,3 +1,13 @@
 {
-    "hello": "Merhaba"
+    "hello": "Merhaba",
+    "login": {
+        "title": "Giriş Yap",
+        "email": "E-posta",
+        "password": "Parola",
+        "login": "Giriş",
+        "forgot_password": "Parolanızı mı unuttunuz?",
+        "login_or": "veya",
+        "google_sign_in": "Google ile Giriş Yap",
+        "create_account": "Hesap oluştur"
+    }
 }
