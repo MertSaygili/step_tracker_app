@@ -1,3 +1,5 @@
+// ignore_for_file: unused_catch_clause
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -8,24 +10,31 @@ class AuthServiceImpl extends AuthService {
   final _firebaseAuth = FirebaseAuth.instance;
 
   @override
-  Future<void> signUp({required String name, required String email, required String password}) async {
+  Future<bool> signUp({required String name, required String email, required String password}) async {
     try {
       final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
       if (userCredential.user != null) {
         await _registerUser(name: name, email: email, password: password);
+        return true;
       }
+      return false;
     } on FirebaseAuthException catch (e) {
-      await Fluttertoast.showToast(msg: e.message!, toastLength: Toast.LENGTH_LONG);
+      // await Fluttertoast.showToast(msg: e.message!, toastLength: Toast.LENGTH_LONG);
+      return false;
     }
   }
 
   @override
-  Future<void> signIn({required String email, required String password}) async {
+  Future<bool> signIn({required String email, required String password}) async {
     try {
       final userCredential = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
-      if (userCredential.user != null) {}
+      print(userCredential);
+      if (userCredential.user != null && userCredential.user!.emailVerified == true) {
+        return true;
+      }
+      return false;
     } on FirebaseAuthException catch (e) {
-      await Fluttertoast.showToast(msg: e.message!, toastLength: Toast.LENGTH_LONG);
+      return false;
     }
   }
 
@@ -39,12 +48,13 @@ class AuthServiceImpl extends AuthService {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
+      final user = await FirebaseAuth.instance.signInWithCredential(credential);
 
-      final x = await FirebaseAuth.instance.signInWithCredential(credential);
-      print(x);
-    } on Exception catch (e) {
-      // TODO
-      print('exception->$e');
+      if (user.user != null) {
+        return;
+      }
+    } on FirebaseAuthException catch (e) {
+      await Fluttertoast.showToast(msg: e.message!, toastLength: Toast.LENGTH_LONG);
     }
   }
 
