@@ -6,7 +6,7 @@ final class AppRouters {
 
   // paths
   static const String loginPath = '/';
-  static const String registerPath = '/register';
+  static const String registerPath = 'register';
 
   // names
   static const String loginName = 'login';

@@ -70,7 +70,6 @@ class _Body extends StatelessWidget {
           listener: (context, state) {
             if (state.loginSuccess) {
               Fluttertoast.showToast(msg: LocaleKeys.toast_messages_login_success.tr());
-              context.goNamed(AppRouters.registerName);
             }
           },
           child: _ChildBody(emailController: emailController, passwordController: passwordController),
@@ -132,7 +131,7 @@ class _ChildBody extends StatelessWidget {
           text: LocaleKeys.login_you_dont_have_an_account.tr(),
           secondText: LocaleKeys.login_create_account.tr(),
           secondTextColor: context.primaryColor,
-          callbackAction: () {},
+          callbackAction: () => context.push('/${AppRouters.registerPath}'),
         ),
       ],
     );
