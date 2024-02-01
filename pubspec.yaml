@@ -48,6 +48,10 @@ dependencies:
   # ui helper
   sign_in_button: ^3.2.0
 
+  # router 
+  go_router: ^13.1.0
+
+
   # modules
   core:
     path: packages/core

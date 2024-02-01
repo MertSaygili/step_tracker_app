@@ -1,5 +1,9 @@
 {
     "hello": "Merhaba",
+    "toast_messages": {
+        "login_success": "Giriş basarılı",
+        "login_error": "Giriş hatası"
+    },
     "login": {
         "title": "Giriş Yap",
         "email": "E-posta",
@@ -8,6 +12,7 @@
         "forgot_password": "Parolanızı mı unuttunuz?",
         "login_or": "veya",
         "google_sign_in": "Google ile Giriş Yap",
-        "create_account": "Hesap oluştur"
+        "create_account": "Hesap oluşturun.",
+        "you_dont_have_an_account": "Hesabınız yok mu?"
     }
 }
