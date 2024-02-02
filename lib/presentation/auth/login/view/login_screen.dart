@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sign_in_button/sign_in_button.dart';
-import 'package:step_tracker_app/app/constants/app_assets.dart';
 import 'package:step_tracker_app/app/constants/app_icons.dart';
 import 'package:step_tracker_app/app/constants/app_routers.dart';
 import 'package:step_tracker_app/app/injector.dart';
@@ -21,6 +20,7 @@ import 'package:step_tracker_app/presentation/widgets/button/custom_text_button.
 import 'package:step_tracker_app/presentation/widgets/button/double_text_button.dart';
 import 'package:step_tracker_app/presentation/widgets/dialog/loading_alert_dialog.dart';
 import 'package:step_tracker_app/presentation/widgets/divider/screen_divider.dart';
+import 'package:step_tracker_app/presentation/widgets/image/logo_circle_image.dart';
 import 'package:step_tracker_app/presentation/widgets/inputs/custom_text_form_field.dart';
 
 part 'widgets/password_textfield.dart';
@@ -92,11 +92,7 @@ class _ChildBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CircleAvatar(
-          radius: context.logoRadius,
-          backgroundColor: context.transparentColor,
-          child: Image.asset(AppAssets.logo),
-        ),
+        const LogoCircleImage(),
         CustomTextFormField(
           textController: emailController,
           inputType: TextInputType.emailAddress,

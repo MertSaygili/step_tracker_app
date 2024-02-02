@@ -14,5 +14,27 @@
         "google_sign_in": "Google ile Giriş Yap",
         "create_account": "Hesap oluşturun.",
         "you_dont_have_an_account": "Hesabınız yok mu?"
+    },
+    "register": {
+        "title": "Hesap oluştur",
+        "email": "E-posta",
+        "username": "Kullanıcı adı",
+        "password": "Parola",
+        "register": "Kayıt",
+        "create_account": "Kayıt ol",
+        "already_have_an_account": "Hesabınız var mı?",
+        "login": "Giriş yapın. "
+    },
+    "reset_password": {
+        "title": "Parolamı yenile",
+        "email": "E-posta",
+        "send": "Gonder",
+        "back_to_login": "Girişe geri dön"
+    },
+    "forgot_password": {
+        "title": "Parolamı mı unuttunuz?",
+        "email": "E-posta",
+        "send": "Gonder",
+        "back_to_login": "Girişe geri dön"
     }
 }

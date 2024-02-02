@@ -10,17 +10,20 @@ import 'package:step_tracker_app/presentation/auth/register/view/register_screen
 final class AppGoRouter {
   const AppGoRouter._();
 
-  static CustomTransitionPage _buildPageWithDefaultTransition<T>({
+  static CustomTransitionPage _buildPageWithSlideTransition({
     required BuildContext context,
     required GoRouterState state,
     required Widget child,
   }) {
-    return CustomTransitionPage<T>(
+    return CustomTransitionPage(
       key: state.pageKey,
       child: child,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
-        opacity: animation,
-        alwaysIncludeSemantics: true,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) => SlideTransition(
+        position: Tween(
+          begin: const Offset(1, 0),
+          end: Offset.zero,
+        ).animate(animation),
+        child: child,
       ),
     );
   }
@@ -35,7 +38,12 @@ final class AppGoRouter {
           GoRoute(
             name: AppRouters.registerName,
             path: AppRouters.registerPath,
-            builder: (context, state) => const RegisterScreen(),
+            builder: (context, state) => RegisterScreen(),
+            pageBuilder: (context, state) => _buildPageWithSlideTransition(
+              context: context,
+              state: state,
+              child: RegisterScreen(),
+            ),
           ),
         ],
       ),
