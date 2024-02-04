@@ -1,8 +1,24 @@
 {
     "hello": "Merhaba",
     "toast_messages": {
+        "firebase_auth_errors": {
+            "user_not_found": "Kullanıcı bulunamadı.",
+            "wrong_password": "Yanlış parola.",
+            "invalid_email": "Geçersiz e_posta,",
+            "email_already_in_use": "E-posta zaten kullanılıyor.",
+            "invalid_username": "Geçersiz kullanıcı adı.",
+            "user_disabled": "Kullanıcı devre dışı bırakıldı.",
+            "too_many_requests": "Çok fazla istek atıldı, tekrar deneyin!",
+            "user_mismatch": "Kullanıcı kimlik bilgileri eşleşmiyor",
+            "unverified_email": "E_posta doğrulanmadı.",
+            "null_user": "Kullanıcı bulunamadı.",
+            "operation_not_allowed": "İşlem iptal edildi.",
+            "unkown_error": "Bilinmeyen bir hata oluştu, tekrar deneyin!"
+        },
         "login_success": "Giriş basarılı",
-        "login_error": "Giriş hatası"
+        "login_error": "Giriş hatası",
+        "register_success": "Hesap oluşturuldu",
+        "register_error": "Kayıt hatası"
     },
     "login": {
         "title": "Giriş Yap",

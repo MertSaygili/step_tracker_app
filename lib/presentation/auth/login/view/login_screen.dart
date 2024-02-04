@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget with LoginScreenMixin<LoginScreen> {
       appBar: CustomAppbar(title: LocaleKeys.login_title.tr(), centerTitle: true),
       body: BlocProvider(
         create: (_) => LoginCubit(authService: Injector.authService, screenContext: context),
-        child: _Body(emailController: emailController, passwordController: passwordController),
+        child: _Body(emailController: emailController, passwordController: passwordController, clearControllers: clearControllers),
       ),
     );
   }
@@ -46,10 +46,12 @@ class _Body extends StatelessWidget {
   const _Body({
     required this.emailController,
     required this.passwordController,
+    required this.clearControllers,
   });
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final VoidCallback clearControllers;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,7 @@ class _Body extends StatelessWidget {
             }
             if (previous.isLoading && current.errorOccur) {
               Navigator.of(context).pop();
-              Fluttertoast.showToast(msg: LocaleKeys.toast_messages_login_error.tr());
+              clearControllers();
             }
             return true;
           },

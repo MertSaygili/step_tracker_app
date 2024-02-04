@@ -1,9 +1,24 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const hello = 'hello';
+  static const toast_messages_firebase_auth_errors_user_not_found = 'toast_messages.firebase_auth_errors.user_not_found';
+  static const toast_messages_firebase_auth_errors_wrong_password = 'toast_messages.firebase_auth_errors.wrong_password';
+  static const toast_messages_firebase_auth_errors_invalid_email = 'toast_messages.firebase_auth_errors.invalid_email';
+  static const toast_messages_firebase_auth_errors_email_already_in_use = 'toast_messages.firebase_auth_errors.email_already_in_use';
+  static const toast_messages_firebase_auth_errors_invalid_username = 'toast_messages.firebase_auth_errors.invalid_username';
+  static const toast_messages_firebase_auth_errors_user_disabled = 'toast_messages.firebase_auth_errors.user_disabled';
+  static const toast_messages_firebase_auth_errors_too_many_requests = 'toast_messages.firebase_auth_errors.too_many_requests';
+  static const toast_messages_firebase_auth_errors_user_mismatch = 'toast_messages.firebase_auth_errors.user_mismatch';
+  static const toast_messages_firebase_auth_errors_unverified_email = 'toast_messages.firebase_auth_errors.unverified_email';
+  static const toast_messages_firebase_auth_errors_null_user = 'toast_messages.firebase_auth_errors.null_user';
+  static const toast_messages_firebase_auth_errors_operation_not_allowed = 'toast_messages.firebase_auth_errors.operation_not_allowed';
+  static const toast_messages_firebase_auth_errors_unkown_error = 'toast_messages.firebase_auth_errors.unkown_error';
+  static const toast_messages_firebase_auth_errors = 'toast_messages.firebase_auth_errors';
   static const toast_messages_login_success = 'toast_messages.login_success';
   static const toast_messages_login_error = 'toast_messages.login_error';
+  static const toast_messages_register_success = 'toast_messages.register_success';
+  static const toast_messages_register_error = 'toast_messages.register_error';
   static const toast_messages = 'toast_messages';
   static const login_title = 'login.title';
   static const login_email = 'login.email';
@@ -34,5 +49,4 @@ abstract class  LocaleKeys {
   static const forgot_password_send = 'forgot_password.send';
   static const forgot_password_back_to_login = 'forgot_password.back_to_login';
   static const forgot_password = 'forgot_password';
-
 }

@@ -5,4 +5,10 @@ mixin RegisterScreenMixin<StatalesWidget extends RegisterScreen> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  void clearControllers() {
+    usernameController.clear();
+    emailController.clear();
+    passwordController.clear();
+  }
 }

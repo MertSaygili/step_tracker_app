@@ -8,10 +8,6 @@ class LoginCubit extends BaseCubit<LoginState> {
   final AuthService authService;
   final BuildContext screenContext;
 
-  void _changeLoading(bool loading) {
-    emit(state.copyWith(isLoading: loading));
-  }
-
   void changeObsecure() {
     emit(state.copyWith(isObscure: !state.isObscure));
   }
@@ -34,5 +30,9 @@ class LoginCubit extends BaseCubit<LoginState> {
     }).catchError((e) {
       emit(state.copyWith(isLoading: false, errorOccur: true, loginSuccess: false));
     });
+  }
+
+  void _changeLoading(bool loading) {
+    emit(state.copyWith(isLoading: loading));
   }
 }
