@@ -1,8 +1,24 @@
 {
     "hello": "Merhaba",
     "toast_messages": {
+        "firebase_auth_errors": {
+            "user_not_found": "Kullanıcı bulunamadı.",
+            "wrong_password": "Yanlış parola.",
+            "invalid_email": "Geçersiz e_posta,",
+            "email_already_in_use": "E-posta zaten kullanılıyor.",
+            "invalid_username": "Geçersiz kullanıcı adı.",
+            "user_disabled": "Kullanıcı devre dışı bırakıldı.",
+            "too_many_requests": "Çok fazla istek atıldı, tekrar deneyin!",
+            "user_mismatch": "Kullanıcı kimlik bilgileri eşleşmiyor",
+            "unverified_email": "E_posta doğrulanmadı.",
+            "null_user": "Kullanıcı bulunamadı.",
+            "operation_not_allowed": "İşlem iptal edildi.",
+            "unkown_error": "Bilinmeyen bir hata oluştu, tekrar deneyin!"
+        },
         "login_success": "Giriş basarılı",
-        "login_error": "Giriş hatası"
+        "login_error": "Giriş hatası",
+        "register_success": "Hesap oluşturuldu",
+        "register_error": "Kayıt hatası"
     },
     "login": {
         "title": "Giriş Yap",
@@ -14,5 +30,27 @@
         "google_sign_in": "Google ile Giriş Yap",
         "create_account": "Hesap oluşturun.",
         "you_dont_have_an_account": "Hesabınız yok mu?"
+    },
+    "register": {
+        "title": "Hesap oluştur",
+        "email": "E-posta",
+        "username": "Kullanıcı adı",
+        "password": "Parola",
+        "register": "Kayıt",
+        "create_account": "Kayıt ol",
+        "already_have_an_account": "Hesabınız var mı?",
+        "login": "Giriş yapın. "
+    },
+    "reset_password": {
+        "title": "Parolamı yenile",
+        "email": "E-posta",
+        "send": "Gonder",
+        "back_to_login": "Girişe geri dön"
+    },
+    "forgot_password": {
+        "title": "Parolamı mı unuttunuz?",
+        "email": "E-posta",
+        "send": "Gonder",
+        "back_to_login": "Girişe geri dön"
     }
 }
