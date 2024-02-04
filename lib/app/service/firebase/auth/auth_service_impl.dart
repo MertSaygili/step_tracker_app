@@ -29,11 +29,15 @@ class AuthServiceImpl extends AuthService {
   Future<bool> signIn({required String email, required String password}) async {
     try {
       final userCredential = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
-      if (userCredential.user != null && userCredential.user!.emailVerified == true) {
+      print('userCredential: $userCredential');
+      if (userCredential.user?.uid != null) {
+        print('userCredential.user: ${userCredential.user}');
         return true;
       }
+      print('false a geldik');
       return false;
     } on FirebaseAuthException catch (e) {
+      print('exception');
       await Fluttertoast.showToast(msg: AuthExceptionHandler.fromException(e.code).get_message, toastLength: Toast.LENGTH_LONG);
       return false;
     }
@@ -52,11 +56,11 @@ class AuthServiceImpl extends AuthService {
       final user = await FirebaseAuth.instance.signInWithCredential(credential);
 
       if (user.user != null) {
-        // await _registerUser(
-        //   name: user.user!.displayName!,
-        //   email: user.user!.email!,
-        //   password: user.user!.uid,
-        // );
+        await _registerUser(
+          name: user.user!.displayName!,
+          email: user.user!.email!,
+          password: user.user!.uid,
+        );
         return;
       }
     } on FirebaseAuthException catch (e) {

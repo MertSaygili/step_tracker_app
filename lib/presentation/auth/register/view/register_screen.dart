@@ -46,7 +46,10 @@ class RegisterScreen extends StatelessWidget with RegisterScreenMixin<RegisterSc
       },
       listener: (context, state) {
         if (state.isRegisterSuccess) {
+          Navigator.of(context).pop();
+          clearControllers();
           Fluttertoast.showToast(msg: LocaleKeys.toast_messages_register_success.tr());
+          context.pop(); // navigate to login page
         }
       },
       child: _Body(usernameController: usernameController, emailController: emailController, passwordController: passwordController),
@@ -70,41 +73,43 @@ class _Body extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.whiteColor,
       appBar: CustomAppbar(title: LocaleKeys.register_title.tr(), centerTitle: true, leading: const CustomBackButton()),
-      body: Padding(
-        padding: context.paddingPage,
-        child: Center(
-          child: Column(
-            children: [
-              const LogoCircleImage(),
-              CustomTextFormField(
-                textController: usernameController,
-                inputType: TextInputType.name,
-                inputAction: TextInputAction.next,
-                labelText: LocaleKeys.register_username.tr(),
-              ),
-              context.emptyBoxLowVertical,
-              CustomTextFormField(
-                textController: emailController,
-                inputType: TextInputType.emailAddress,
-                inputAction: TextInputAction.next,
-                labelText: LocaleKeys.register_email.tr(),
-              ),
-              context.emptyBoxLowVertical,
-              PasswordField(passwordController: passwordController),
-              context.emptyBoxLargeVertical,
-              RegisterElevatedButton(
-                usernameController: usernameController,
-                emailController: emailController,
-                passwordController: passwordController,
-              ),
-              context.emptyBoxLargeVertical,
-              DoubleTextActionButton(
-                text: LocaleKeys.register_already_have_an_account.tr(),
-                callbackAction: () => context.pop(),
-                secondText: LocaleKeys.register_login.tr(),
-                secondTextColor: context.primaryColor,
-              ),
-            ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: context.paddingPage,
+          child: Center(
+            child: Column(
+              children: [
+                const LogoCircleImage(),
+                CustomTextFormField(
+                  textController: usernameController,
+                  inputType: TextInputType.name,
+                  inputAction: TextInputAction.next,
+                  labelText: LocaleKeys.register_username.tr(),
+                ),
+                context.emptyBoxLowVertical,
+                CustomTextFormField(
+                  textController: emailController,
+                  inputType: TextInputType.emailAddress,
+                  inputAction: TextInputAction.next,
+                  labelText: LocaleKeys.register_email.tr(),
+                ),
+                context.emptyBoxLowVertical,
+                PasswordField(passwordController: passwordController),
+                context.emptyBoxLargeVertical,
+                RegisterElevatedButton(
+                  usernameController: usernameController,
+                  emailController: emailController,
+                  passwordController: passwordController,
+                ),
+                context.emptyBoxLargeVertical,
+                DoubleTextActionButton(
+                  text: LocaleKeys.register_already_have_an_account.tr(),
+                  callbackAction: () => context.pop(),
+                  secondText: LocaleKeys.register_login.tr(),
+                  secondTextColor: context.primaryColor,
+                ),
+              ],
+            ),
           ),
         ),
       ),

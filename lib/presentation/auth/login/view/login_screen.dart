@@ -71,6 +71,7 @@ class _Body extends StatelessWidget {
           },
           listener: (context, state) {
             if (state.loginSuccess) {
+              Navigator.of(context).pop();
               Fluttertoast.showToast(msg: LocaleKeys.toast_messages_login_success.tr());
             }
           },

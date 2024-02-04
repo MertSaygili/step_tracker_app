@@ -16,7 +16,6 @@ class LoginCubit extends BaseCubit<LoginState> {
     _changeLoading(true);
 
     final response = await authService.signIn(email: email, password: password);
-
     if (response == true) {
       emit(state.copyWith(isLoading: false, loginSuccess: true));
     } else {

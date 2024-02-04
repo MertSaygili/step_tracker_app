@@ -17,7 +17,6 @@ class RegisterCubit extends BaseCubit<RegisterState> {
     _changeLoading(true);
 
     final response = await authService.signUp(name: username, email: email, password: password);
-    print(response);
 
     if (response == true) {
       emit(state.copyWith(isLoading: false, isRegisterSuccess: true));
