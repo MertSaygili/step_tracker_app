@@ -12,8 +12,15 @@ class RegisterElevatedButton extends StatelessWidget {
     return BlocBuilder<RegisterCubit, RegisterState>(
       builder: (context, state) {
         return CustomLongElevatedButton(
-          callbackAction: () {
-            context.read<RegisterCubit>().register(usernameController.text, emailController.text, passwordController.text);
+          callbackAction: () async {
+            // sends mail to user
+            await context.read<RegisterCubit>().sendEmail(
+                  RegisterDataModel(
+                    username: usernameController.text,
+                    email: emailController.text,
+                    password: passwordController.text,
+                  ),
+                );
           },
           text: LocaleKeys.register_create_account.tr(),
           textColor: context.whiteColor,

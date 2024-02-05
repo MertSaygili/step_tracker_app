@@ -46,6 +46,7 @@ extension ContextExtension on BuildContext {
   Color get whiteColor => const Color(0XFFFFFFFF);
   Color get blackColor => const Color(0XFF000000);
   Color get greenColor => const Color(0XFF2ECC71);
+  Color get greyColor => const Color(0XFFC0C0C0);
   Color get transparentColor => Colors.transparent;
 
   // padding

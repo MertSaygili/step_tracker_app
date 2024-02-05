@@ -18,16 +18,22 @@
         "login_success": "Giriş basarılı",
         "login_error": "Giriş hatası",
         "register_success": "Hesap oluşturuldu",
-        "register_error": "Kayıt hatası"
+        "register_error": "Kayıt hatası",
+        "mail_send": "Mail adresinize e-posta gönderildi.",
+        "mail_send_error": "Mail adresinize e-posta gönderilemedi, tekrar deneyin.",
+        "send_mail_repeat_error": "E-posta gönderme limitini geçtiniz. Daha sonra tekrar deneyin.",
+        "not_correct_pin_code": "Yanlış pin kodu",
+        "empty_fields": "Alanlar boş bırakılamaz"
     },
     "email": {
         "forgot_password": "Parolanızı mı unuttunuz?",
         "header": "Merhaba, \nParolanızı yenilemek istediğinizde bu e-posta ile parolanızı yenileyebilirsiniz.",
         "reset_password_title": "Parola yenileme talebi",
-        "reset_password": "Parola yenileme",
+        "reset_password": "Parola Yenileme",
         "warning_email": "Eğer bu talepte siz bulunmadıysanız bu maili görmezden gelebilirsiniz.",
         "reset_password_body": "Birileri (sen olduğunu umuyoruz) Step Tracker Uygulama hesabın için şifre sıfırlama talebinde bulundu. Aşağıdaki kodu kullanarak şifreni sıfırlayabilirsin:",
-        "footer": "Step Tracker Uygulaması, bu e-postayı gönderdi. E-posta ile ilgili herhangi bir sorun ya da bilgi isteşi olursa bizimle iletisime geçebilirsiniz."
+        "footer": "Step Tracker Uygulaması, bu e-postayı gönderdi. E-posta ile ilgili herhangi bir sorun ya da bilgi isteşi olursa bizimle iletisime geçebilirsiniz.",
+        "get_pincode": "Pin kodu al"
     },
     "login": {
         "title": "Giriş Yap",
@@ -49,6 +55,14 @@
         "create_account": "Kayıt ol",
         "already_have_an_account": "Hesabınız var mı?",
         "login": "Giriş yapın. "
+    },
+    "vertification": {
+        "title": "E-posta dogrulama",
+        "body": "e-posta adresinize onay kodu gönderildi. E-posta ile ilgili herhangi bir sorun ya da bilgi isteği olursa bizimle iletisime geçebilirsiniz.",
+        "email": "E-posta",
+        "send": "Gonder",
+        "back_to_login": "Girişe geri dön",
+        "resend": "Tekrar gönder"
     },
     "reset_password": {
         "title": "Parolamı yenile",
