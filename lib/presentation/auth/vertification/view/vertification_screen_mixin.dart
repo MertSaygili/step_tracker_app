@@ -5,7 +5,5 @@ mixin VertificationScreenMixin on State<VertificationScreen> {
   @override
   void initState() {
     super.initState();
-    print('BBB');
-    print(widget.vertificationIncomingDataModel);
   }
 }

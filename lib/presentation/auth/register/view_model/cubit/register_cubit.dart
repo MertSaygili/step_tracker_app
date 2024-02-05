@@ -24,10 +24,13 @@ class RegisterCubit extends BaseCubit<RegisterState> {
   }
 
   Future<void> sendEmail(RegisterDataModel registerData) async {
-    _changeLoading(true);
+    emit(state.copyWith(isLoading: true, emptyFields: false));
     _registerDataModel = registerData;
-    print('SAAAAA');
-    print(_registerDataModel);
+
+    if (registerDataModel.email == '' || registerDataModel.password == '' || registerDataModel.username == '') {
+      emit(state.copyWith(isLoading: false, emptyFields: true));
+      return;
+    }
 
     // save pin code to local db
     final pinCode = OTPCreator.createOTP();
@@ -44,21 +47,5 @@ class RegisterCubit extends BaseCubit<RegisterState> {
     }
   }
 
-  // Future<void> register(String username, String email, String password) async {
-  //   _changeLoading(true);
-
-  //   final response = await authService.signUp(name: username, email: email, password: password);
-
-  //   if (response == true) {
-  //     emit(state.copyWith(isLoading: false, isRegisterSuccess: true));
-  //   } else {
-  //     emit(state.copyWith(isLoading: false, errorOccur: true));
-  //   }
-  // }
-
   RegisterDataModel get registerDataModel => _registerDataModel;
-
-  void _changeLoading(bool loading) {
-    emit(state.copyWith(isLoading: loading));
-  }
 }

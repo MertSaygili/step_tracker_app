@@ -21,7 +21,9 @@
         "register_error": "Kayıt hatası",
         "mail_send": "Mail adresinize e-posta gönderildi.",
         "mail_send_error": "Mail adresinize e-posta gönderilemedi, tekrar deneyin.",
-        "send_mail_repeat_error": "E-posta gönderme limitini geçtiniz. Daha sonra tekrar deneyin."
+        "send_mail_repeat_error": "E-posta gönderme limitini geçtiniz. Daha sonra tekrar deneyin.",
+        "not_correct_pin_code": "Yanlış pin kodu",
+        "empty_fields": "Alanlar boş bırakılamaz"
     },
     "email": {
         "forgot_password": "Parolanızı mı unuttunuz?",

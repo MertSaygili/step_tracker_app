@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router/go_router.dart';
+import 'package:step_tracker_app/app/constants/app_routers.dart';
 import 'package:step_tracker_app/app/injector.dart';
 import 'package:step_tracker_app/app/localization/locale_keys.g.dart';
 import 'package:step_tracker_app/presentation/auth/vertification/model/vertification_incoming_data_model.dart';
@@ -13,10 +16,13 @@ import 'package:step_tracker_app/presentation/auth/vertification/view_model/stat
 import 'package:step_tracker_app/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:step_tracker_app/presentation/widgets/button/custom_elevated_button.dart';
 import 'package:step_tracker_app/presentation/widgets/button/custom_text_button.dart';
+import 'package:step_tracker_app/presentation/widgets/dialog/loading_alert_dialog.dart';
 import 'package:step_tracker_app/presentation/widgets/image/logo_circle_image.dart';
 import 'package:step_tracker_app/presentation/widgets/text/custom_rich_text.dart';
 
+part './widgets/action_button.dart';
 part './widgets/custom_otp_field.dart';
+part './widgets/resend_pincode_button.dart';
 
 class VertificationScreen extends StatefulWidget {
   const VertificationScreen({required this.vertificationIncomingDataModel, super.key});
@@ -36,39 +42,70 @@ class _VertificationScreenState extends State<VertificationScreen> implements Ve
         sendMailService: Injector.sendMailService,
         vertificationIncomingDataModel: widget.vertificationIncomingDataModel,
       ),
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: context.whiteColor,
-        appBar: CustomAppbar(title: LocaleKeys.vertification_title.tr(), centerTitle: true),
-        body: Padding(
-          padding: context.paddingPage,
-          child: Column(
-            children: [
-              const LogoCircleImage(),
-              CustomRichText(
-                firstText: widget.vertificationIncomingDataModel.registerDataModel?.email ?? '',
-                secondText: LocaleKeys.vertification_body.tr(),
-                firstTextColor: context.primaryColor,
-                lineHeight: 1.5,
-              ),
-              context.emptyBoxLargeVertical,
-              const CustomOTPField(),
-              context.emptyBoxLargeVertical,
-              CustomLongElevatedButton(
-                text: widget.vertificationIncomingDataModel.isComingFromRegister
-                    ? LocaleKeys.register_create_account.tr()
-                    : LocaleKeys.reset_password_title.tr(),
-                callbackAction: () {},
-                textColor: context.whiteColor,
-              ),
-              const Spacer(),
-              CustomTextButton(
-                text: LocaleKeys.vertification_resend.tr(),
-                callbackAction: () {},
-                textColor: context.primaryColor,
-              ),
-            ],
-          ),
+      child: _listener(),
+    );
+  }
+
+  BlocListener<VertificationCubit, VertificationStates> _listener() {
+    return BlocListener<VertificationCubit, VertificationStates>(
+      listenWhen: (previous, current) {
+        if (current.isLoading) {
+          LoadingAlertDialog.showLoading(context);
+        }
+        if (previous.isLoading && current.errorOccur) {
+          Navigator.of(context).pop();
+        }
+        return true;
+      },
+      listener: (context, state) {
+        if (state.emailSended) {
+          Fluttertoast.showToast(msg: LocaleKeys.toast_messages_mail_send.tr());
+        }
+        if (state.errorOccur) {
+          Fluttertoast.showToast(msg: state.errorText);
+        }
+        if (state.registerSuccess) {
+          Fluttertoast.showToast(msg: LocaleKeys.toast_messages_register_success.tr());
+          context.go(AppRouters.loginPath);
+        }
+        if (state.pushToResetPassword) {
+          // push to reset password
+        }
+      },
+      child: _Body(widget: widget),
+    );
+  }
+}
+
+class _Body extends StatelessWidget {
+  const _Body({required this.widget});
+
+  final VertificationScreen widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: context.whiteColor,
+      appBar: CustomAppbar(title: LocaleKeys.vertification_title.tr(), centerTitle: true),
+      body: Padding(
+        padding: context.paddingPage,
+        child: Column(
+          children: [
+            const LogoCircleImage(),
+            CustomRichText(
+              firstText: widget.vertificationIncomingDataModel.registerDataModel?.email ?? '',
+              secondText: LocaleKeys.vertification_body.tr(),
+              firstTextColor: context.primaryColor,
+              lineHeight: 1.5,
+            ),
+            context.emptyBoxLargeVertical,
+            const CustomOTPField(),
+            context.emptyBoxLargeVertical,
+            ActionButton(vertificationIncomingDataModel: widget.vertificationIncomingDataModel),
+            const Spacer(),
+            const ResendPincodeButton(),
+          ],
         ),
       ),
     );

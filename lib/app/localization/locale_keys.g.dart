@@ -22,6 +22,8 @@ abstract class  LocaleKeys {
   static const toast_messages_mail_send = 'toast_messages.mail_send';
   static const toast_messages_mail_send_error = 'toast_messages.mail_send_error';
   static const toast_messages_send_mail_repeat_error = 'toast_messages.send_mail_repeat_error';
+  static const toast_messages_not_correct_pin_code = 'toast_messages.not_correct_pin_code';
+  static const toast_messages_empty_fields = 'toast_messages.empty_fields';
   static const toast_messages = 'toast_messages';
   static const email_forgot_password = 'email.forgot_password';
   static const email_header = 'email.header';

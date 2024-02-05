@@ -46,9 +46,36 @@ class VertificationCubit extends BaseCubit<VertificationStates> {
     }
   }
 
-  Future<void> register() async {}
+  Future<void> register() async {
+    emit(state.copyWith(isLoading: true));
 
-  Future<void> forgotPassword() async {}
+    if (_userInput == SharedManager.getString(SharedEnums.pinCode)) {
+      if (vertificationIncomingDataModel.registerDataModel == null) return;
+
+      final response = await authService.signUp(
+        name: vertificationIncomingDataModel.registerDataModel!.username,
+        email: vertificationIncomingDataModel.registerDataModel!.email,
+        password: vertificationIncomingDataModel.registerDataModel!.password,
+      );
+
+      if (response == true) {
+        emit(state.copyWith(isLoading: false, registerSuccess: true));
+      } else {
+        emit(state.copyWith(isLoading: false, errorOccur: true, errorText: LocaleKeys.toast_messages_firebase_auth_errors_unkown_error.tr()));
+      }
+    }
+  }
+
+  Future<void> forgotPassword() async {
+    emit(state.copyWith(isLoading: true));
+
+    if (_userInput == SharedManager.getString(SharedEnums.pinCode)) {
+      if (vertificationIncomingDataModel.registerDataModel == null) return;
+      emit(state.copyWith(isLoading: false, pushToResetPassword: true));
+    } else {
+      emit(state.copyWith(isLoading: false, errorOccur: true, errorText: LocaleKeys.toast_messages_not_correct_pin_code.tr()));
+    }
+  }
 
   void setUserInput(String val) {
     _userInput = val;

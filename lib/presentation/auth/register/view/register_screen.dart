@@ -41,7 +41,7 @@ class RegisterScreen extends StatelessWidget with RegisterScreenMixin<RegisterSc
         if (current.isLoading) {
           LoadingAlertDialog.showLoading(context);
         }
-        if (previous.isLoading && current.errorOccur) {
+        if (previous.isLoading && (current.errorOccur || current.emptyFields)) {
           Navigator.of(context).pop();
           clearControllers();
         }
@@ -56,10 +56,9 @@ class RegisterScreen extends StatelessWidget with RegisterScreenMixin<RegisterSc
             '/${AppRouters.vertificationPath}',
             extra: VertificationIncomingDataModel(registerDataModel: context.read<RegisterCubit>().registerDataModel, isComingFromRegister: true),
           );
-          // context.pushNamed(
-          //   AppRouters.vertificationPath,
-          //   extra: VertificationIncomingDataModel(registerDataModel: context.read<RegisterCubit>().registerDataModel, isComingFromRegister: true),
-          // ); // navigate to login page
+        }
+        if (state.emptyFields) {
+          Fluttertoast.showToast(msg: LocaleKeys.toast_messages_empty_fields.tr());
         }
       },
       child: _Body(usernameController: usernameController, emailController: emailController, passwordController: passwordController),
