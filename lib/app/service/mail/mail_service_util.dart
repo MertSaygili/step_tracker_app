@@ -6,6 +6,7 @@ import 'package:mailer/mailer.dart';
 import 'package:step_tracker_app/app/env/env.dart';
 import 'package:step_tracker_app/app/localization/locale_keys.g.dart';
 
+@immutable
 final class MailServiceUtil {
   static Message createPinCodeMail(String userMail, String vertificationCode) {
     final mailAddress = Env.smtpHost;
