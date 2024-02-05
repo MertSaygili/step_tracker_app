@@ -20,6 +20,15 @@
         "register_success": "Hesap oluşturuldu",
         "register_error": "Kayıt hatası"
     },
+    "email": {
+        "forgot_password": "Parolanızı mı unuttunuz?",
+        "header": "Merhaba, \nParolanızı yenilemek istediğinizde bu e-posta ile parolanızı yenileyebilirsiniz.",
+        "reset_password_title": "Parola yenileme talebi",
+        "reset_password": "Parola yenileme",
+        "warning_email": "Eğer bu talepte siz bulunmadıysanız bu maili görmezden gelebilirsiniz.",
+        "reset_password_body": "Birileri (sen olduğunu umuyoruz) Step Tracker Uygulama hesabın için şifre sıfırlama talebinde bulundu. Aşağıdaki kodu kullanarak şifreni sıfırlayabilirsin:",
+        "footer": "Step Tracker Uygulaması, bu e-postayı gönderdi. E-posta ile ilgili herhangi bir sorun ya da bilgi isteşi olursa bizimle iletisime geçebilirsiniz."
+    },
     "login": {
         "title": "Giriş Yap",
         "email": "E-posta",

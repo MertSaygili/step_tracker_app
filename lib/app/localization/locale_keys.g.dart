@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const hello = 'hello';
   static const toast_messages_firebase_auth_errors_user_not_found = 'toast_messages.firebase_auth_errors.user_not_found';
   static const toast_messages_firebase_auth_errors_wrong_password = 'toast_messages.firebase_auth_errors.wrong_password';
@@ -20,6 +20,14 @@ abstract class LocaleKeys {
   static const toast_messages_register_success = 'toast_messages.register_success';
   static const toast_messages_register_error = 'toast_messages.register_error';
   static const toast_messages = 'toast_messages';
+  static const email_forgot_password = 'email.forgot_password';
+  static const email_header = 'email.header';
+  static const email_reset_password_title = 'email.reset_password_title';
+  static const email_reset_password = 'email.reset_password';
+  static const email_warning_email = 'email.warning_email';
+  static const email_reset_password_body = 'email.reset_password_body';
+  static const email_footer = 'email.footer';
+  static const email = 'email';
   static const login_title = 'login.title';
   static const login_email = 'login.email';
   static const login_password = 'login.password';
@@ -49,4 +57,5 @@ abstract class LocaleKeys {
   static const forgot_password_send = 'forgot_password.send';
   static const forgot_password_back_to_login = 'forgot_password.back_to_login';
   static const forgot_password = 'forgot_password';
+
 }
