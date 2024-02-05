@@ -32,6 +32,7 @@ abstract class  LocaleKeys {
   static const email_warning_email = 'email.warning_email';
   static const email_reset_password_body = 'email.reset_password_body';
   static const email_footer = 'email.footer';
+  static const email_get_pincode = 'email.get_pincode';
   static const email = 'email';
   static const login_title = 'login.title';
   static const login_email = 'login.email';

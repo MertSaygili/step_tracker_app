@@ -107,9 +107,7 @@ class _ChildBody extends StatelessWidget {
         Align(
           alignment: Alignment.centerRight,
           child: CustomTextButton(
-            callbackAction: () {
-              // forgot password
-            },
+            callbackAction: () => context.push('/${AppRouters.getMailPath}'),
             text: LocaleKeys.login_forgot_password.tr(),
           ),
         ),
