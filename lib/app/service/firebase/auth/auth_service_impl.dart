@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:step_tracker_app/app/service/firebase/auth/auth_exceptions.dart';
 import 'package:step_tracker_app/app/service/firebase/auth/auth_service.dart';
 import 'package:step_tracker_app/app/service/firebase/collections.dart';
 
@@ -19,7 +20,7 @@ class AuthServiceImpl extends AuthService {
       }
       return false;
     } on FirebaseAuthException catch (e) {
-      // await Fluttertoast.showToast(msg: e.message!, toastLength: Toast.LENGTH_LONG);
+      await Fluttertoast.showToast(msg: AuthExceptionHandler.fromException(e.code).get_message, toastLength: Toast.LENGTH_LONG);
       return false;
     }
   }
@@ -28,12 +29,12 @@ class AuthServiceImpl extends AuthService {
   Future<bool> signIn({required String email, required String password}) async {
     try {
       final userCredential = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
-      print(userCredential);
-      if (userCredential.user != null && userCredential.user!.emailVerified == true) {
+      if (userCredential.user?.uid != null) {
         return true;
       }
       return false;
     } on FirebaseAuthException catch (e) {
+      await Fluttertoast.showToast(msg: AuthExceptionHandler.fromException(e.code).get_message, toastLength: Toast.LENGTH_LONG);
       return false;
     }
   }
@@ -51,10 +52,16 @@ class AuthServiceImpl extends AuthService {
       final user = await FirebaseAuth.instance.signInWithCredential(credential);
 
       if (user.user != null) {
+        await _registerUser(
+          name: user.user!.displayName!,
+          email: user.user!.email!,
+          password: user.user!.uid,
+        );
         return;
       }
     } on FirebaseAuthException catch (e) {
-      await Fluttertoast.showToast(msg: e.message!, toastLength: Toast.LENGTH_LONG);
+      await Fluttertoast.showToast(msg: AuthExceptionHandler.fromException(e.code).get_message, toastLength: Toast.LENGTH_LONG);
+      return;
     }
   }
 

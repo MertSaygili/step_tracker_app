@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.steptrackerapp</string>
+	<string>com.example.step_tracker_app</string>
 	<key>PROJECT_ID</key>
 	<string>step-tracker-app-36c6e</string>
 	<key>STORAGE_BUCKET</key>

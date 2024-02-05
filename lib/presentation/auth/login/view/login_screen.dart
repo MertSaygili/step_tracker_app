@@ -7,20 +7,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sign_in_button/sign_in_button.dart';
-import 'package:step_tracker_app/app/constants/app_assets.dart';
 import 'package:step_tracker_app/app/constants/app_icons.dart';
 import 'package:step_tracker_app/app/constants/app_routers.dart';
 import 'package:step_tracker_app/app/injector.dart';
 import 'package:step_tracker_app/app/localization/locale_keys.g.dart';
-import 'package:step_tracker_app/presentation/login/view/login_screen_mixin.dart';
-import 'package:step_tracker_app/presentation/login/view_model/cubit/login_cubit.dart';
-import 'package:step_tracker_app/presentation/login/view_model/states/login_states.dart';
+import 'package:step_tracker_app/presentation/auth/login/view/login_screen_mixin.dart';
+import 'package:step_tracker_app/presentation/auth/login/view_model/cubit/login_cubit.dart';
+import 'package:step_tracker_app/presentation/auth/login/view_model/states/login_states.dart';
 import 'package:step_tracker_app/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:step_tracker_app/presentation/widgets/button/custom_elevated_button.dart';
 import 'package:step_tracker_app/presentation/widgets/button/custom_text_button.dart';
 import 'package:step_tracker_app/presentation/widgets/button/double_text_button.dart';
 import 'package:step_tracker_app/presentation/widgets/dialog/loading_alert_dialog.dart';
 import 'package:step_tracker_app/presentation/widgets/divider/screen_divider.dart';
+import 'package:step_tracker_app/presentation/widgets/image/logo_circle_image.dart';
 import 'package:step_tracker_app/presentation/widgets/inputs/custom_text_form_field.dart';
 
 part 'widgets/password_textfield.dart';
@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget with LoginScreenMixin<LoginScreen> {
       appBar: CustomAppbar(title: LocaleKeys.login_title.tr(), centerTitle: true),
       body: BlocProvider(
         create: (_) => LoginCubit(authService: Injector.authService, screenContext: context),
-        child: _Body(emailController: emailController, passwordController: passwordController),
+        child: _Body(emailController: emailController, passwordController: passwordController, clearControllers: clearControllers),
       ),
     );
   }
@@ -46,10 +46,12 @@ class _Body extends StatelessWidget {
   const _Body({
     required this.emailController,
     required this.passwordController,
+    required this.clearControllers,
   });
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final VoidCallback clearControllers;
 
   @override
   Widget build(BuildContext context) {
@@ -63,14 +65,14 @@ class _Body extends StatelessWidget {
             }
             if (previous.isLoading && current.errorOccur) {
               Navigator.of(context).pop();
-              Fluttertoast.showToast(msg: LocaleKeys.toast_messages_login_error.tr());
+              clearControllers();
             }
             return true;
           },
           listener: (context, state) {
             if (state.loginSuccess) {
+              Navigator.of(context).pop();
               Fluttertoast.showToast(msg: LocaleKeys.toast_messages_login_success.tr());
-              context.goNamed(AppRouters.registerName);
             }
           },
           child: _ChildBody(emailController: emailController, passwordController: passwordController),
@@ -93,11 +95,7 @@ class _ChildBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CircleAvatar(
-          radius: context.logoRadius,
-          backgroundColor: context.transparentColor,
-          child: Image.asset(AppAssets.logo),
-        ),
+        const LogoCircleImage(),
         CustomTextFormField(
           textController: emailController,
           inputType: TextInputType.emailAddress,
@@ -132,7 +130,7 @@ class _ChildBody extends StatelessWidget {
           text: LocaleKeys.login_you_dont_have_an_account.tr(),
           secondText: LocaleKeys.login_create_account.tr(),
           secondTextColor: context.primaryColor,
-          callbackAction: () {},
+          callbackAction: () => context.push('/${AppRouters.registerPath}'),
         ),
       ],
     );
