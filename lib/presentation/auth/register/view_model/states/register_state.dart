@@ -4,21 +4,24 @@ class RegisterState extends Equatable {
   const RegisterState({
     this.obsecure = false,
     this.isLoading = false,
-    this.isRegisterSuccess = false,
     this.errorOccur = false,
+    this.emailSended = false,
+    this.sendEmailError = false,
   });
 
   final bool obsecure;
   final bool isLoading;
-  final bool isRegisterSuccess;
   final bool errorOccur;
+  final bool emailSended;
+  final bool sendEmailError;
 
-  RegisterState copyWith({bool? obsecure, bool? isLoading, bool? isRegisterSuccess, bool? errorOccur}) {
+  RegisterState copyWith({bool? obsecure, bool? isLoading, bool? emailSended, bool? errorOccur, bool? sendEmailError}) {
     return RegisterState(
       obsecure: obsecure ?? false,
       isLoading: isLoading ?? false,
-      isRegisterSuccess: isRegisterSuccess ?? false,
       errorOccur: errorOccur ?? false,
+      emailSended: emailSended ?? false,
+      sendEmailError: sendEmailError ?? false,
     );
   }
 
@@ -26,7 +29,8 @@ class RegisterState extends Equatable {
   List<Object> get props => [
         obsecure,
         isLoading,
-        isRegisterSuccess,
         errorOccur,
+        emailSended,
+        sendEmailError,
       ];
 }

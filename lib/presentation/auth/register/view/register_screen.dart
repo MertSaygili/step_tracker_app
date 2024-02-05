@@ -5,11 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:step_tracker_app/app/constants/app_icons.dart';
+import 'package:step_tracker_app/app/constants/app_routers.dart';
 import 'package:step_tracker_app/app/injector.dart';
 import 'package:step_tracker_app/app/localization/locale_keys.g.dart';
+import 'package:step_tracker_app/presentation/auth/register/model/register_data_model.dart';
 import 'package:step_tracker_app/presentation/auth/register/view/register_screen_mixin.dart';
 import 'package:step_tracker_app/presentation/auth/register/view_model/cubit/register_cubit.dart';
 import 'package:step_tracker_app/presentation/auth/register/view_model/states/register_state.dart';
+import 'package:step_tracker_app/presentation/auth/vertification/model/vertification_incoming_data_model.dart';
 import 'package:step_tracker_app/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:step_tracker_app/presentation/widgets/button/custom_back_button.dart';
 import 'package:step_tracker_app/presentation/widgets/button/custom_elevated_button.dart';
@@ -27,7 +30,7 @@ class RegisterScreen extends StatelessWidget with RegisterScreenMixin<RegisterSc
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => RegisterCubit(authService: Injector.authService, screenContext: context),
+      create: (_) => RegisterCubit(authService: Injector.authService, screenContext: context, sendMailService: Injector.sendMailService),
       child: _listener(context),
     );
   }
@@ -45,11 +48,18 @@ class RegisterScreen extends StatelessWidget with RegisterScreenMixin<RegisterSc
         return true;
       },
       listener: (context, state) {
-        if (state.isRegisterSuccess) {
+        if (state.emailSended) {
           Navigator.of(context).pop();
           clearControllers();
-          Fluttertoast.showToast(msg: LocaleKeys.toast_messages_register_success.tr());
-          context.pop(); // navigate to login page
+          Fluttertoast.showToast(msg: LocaleKeys.toast_messages_mail_send.tr());
+          context.push(
+            '/${AppRouters.vertificationPath}',
+            extra: VertificationIncomingDataModel(registerDataModel: context.read<RegisterCubit>().registerDataModel, isComingFromRegister: true),
+          );
+          // context.pushNamed(
+          //   AppRouters.vertificationPath,
+          //   extra: VertificationIncomingDataModel(registerDataModel: context.read<RegisterCubit>().registerDataModel, isComingFromRegister: true),
+          // ); // navigate to login page
         }
       },
       child: _Body(usernameController: usernameController, emailController: emailController, passwordController: passwordController),

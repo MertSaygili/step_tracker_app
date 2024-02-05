@@ -19,6 +19,9 @@ abstract class  LocaleKeys {
   static const toast_messages_login_error = 'toast_messages.login_error';
   static const toast_messages_register_success = 'toast_messages.register_success';
   static const toast_messages_register_error = 'toast_messages.register_error';
+  static const toast_messages_mail_send = 'toast_messages.mail_send';
+  static const toast_messages_mail_send_error = 'toast_messages.mail_send_error';
+  static const toast_messages_send_mail_repeat_error = 'toast_messages.send_mail_repeat_error';
   static const toast_messages = 'toast_messages';
   static const email_forgot_password = 'email.forgot_password';
   static const email_header = 'email.header';
@@ -47,6 +50,13 @@ abstract class  LocaleKeys {
   static const register_already_have_an_account = 'register.already_have_an_account';
   static const register_login = 'register.login';
   static const register = 'register';
+  static const vertification_title = 'vertification.title';
+  static const vertification_body = 'vertification.body';
+  static const vertification_email = 'vertification.email';
+  static const vertification_send = 'vertification.send';
+  static const vertification_back_to_login = 'vertification.back_to_login';
+  static const vertification_resend = 'vertification.resend';
+  static const vertification = 'vertification';
   static const reset_password_title = 'reset_password.title';
   static const reset_password_email = 'reset_password.email';
   static const reset_password_send = 'reset_password.send';

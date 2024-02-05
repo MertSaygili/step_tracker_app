@@ -18,7 +18,10 @@
         "login_success": "Giriş basarılı",
         "login_error": "Giriş hatası",
         "register_success": "Hesap oluşturuldu",
-        "register_error": "Kayıt hatası"
+        "register_error": "Kayıt hatası",
+        "mail_send": "Mail adresinize e-posta gönderildi.",
+        "mail_send_error": "Mail adresinize e-posta gönderilemedi, tekrar deneyin.",
+        "send_mail_repeat_error": "E-posta gönderme limitini geçtiniz. Daha sonra tekrar deneyin."
     },
     "email": {
         "forgot_password": "Parolanızı mı unuttunuz?",
@@ -49,6 +52,14 @@
         "create_account": "Kayıt ol",
         "already_have_an_account": "Hesabınız var mı?",
         "login": "Giriş yapın. "
+    },
+    "vertification": {
+        "title": "E-posta dogrulama",
+        "body": "e-posta adresinize onay kodu gönderildi. E-posta ile ilgili herhangi bir sorun ya da bilgi isteği olursa bizimle iletisime geçebilirsiniz.",
+        "email": "E-posta",
+        "send": "Gonder",
+        "back_to_login": "Girişe geri dön",
+        "resend": "Tekrar gönder"
     },
     "reset_password": {
         "title": "Parolamı yenile",
